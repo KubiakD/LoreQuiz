@@ -18,6 +18,10 @@
   --black: #010A13;
 
   --background: linear-gradient(var(--blue-6), var(--blue-7));
+
+  --space-4: .25rem;
+  --space-8: .5rem;
+  --space-10: .625rem;
 }
 * {
   box-sizing: border-box;
@@ -41,9 +45,13 @@ h1,h2,h3,h4 {
   font-family: var(--font-beaufort);
   color: var(--gold-4);
 }
+h1 {
+  font-size: 3rem;
+}
 p,a {
   font-family: var(--font-spiegel);
   color: var(--gold-3);
+  font-size: 1.5rem;
 }
 a {
   color: inherit;

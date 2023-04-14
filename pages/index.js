@@ -1,8 +1,9 @@
+import Input from '../components/Input'
 export default function Home() {
   return (
     <>
-      <h1>Hello world!</h1>
-      <p>Welcome to NextJS!</p>
+      <h1>Welcome to LoreQuiz</h1>
+      <Input label='Enter your name to begin' input={{id: 'username'}} />
     </>
-  )
+  );
 }

@@ -1,5 +1,19 @@
-.layout a {
+.layout {
+    height: 100vh;
+    position: relative;
+}
+.layout>a {
     font-family: var(--font-beaufort);
     font-size: 6rem;
     color: var(--gold-4);
+    position: absolute;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+}
+.content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
