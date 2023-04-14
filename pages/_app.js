@@ -1,4 +1,5 @@
 import '../styles/globals.css'
+import Layout from '../components/Layout';
 import Beaufort from 'next/font/local';
 import Spiegel from 'next/font/local';
 
@@ -15,7 +16,10 @@ const spiegel = Spiegel({
 export default function App({ Component, pageProps }) {
   return (
     <main className={`${beaufort.variable} ${spiegel.variable}`}>
+    <Layout >
       <Component {...pageProps} />
+    </Layout>
     </main>
+      
   );
 }
