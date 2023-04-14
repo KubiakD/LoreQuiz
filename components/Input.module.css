@@ -1,0 +1,27 @@
+.input {
+    display: flex;
+    flex-direction: column;
+}
+.input label {
+    font-family: var(--font-spiegel);
+    color: var(--gold-3);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+.input input{
+    padding: var(--space-8);
+    margin: 0 auto;
+    background-color: var(--blue-7);
+    color: var(--gold-3);
+    width: 35%;
+    border: none;
+    border-bottom: 3px solid var(--gold-4);
+    font-family: var(--font-spiegel);
+    font-size: 1.5rem;
+}
+.input input:active,
+.input input:focus {
+    border: none;
+    outline: none;
+    border-bottom: 3px solid var(--gold-3);
+}
