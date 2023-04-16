@@ -3,9 +3,6 @@
     flex-direction: column;
 }
 .input label {
-    font-family: var(--font-spiegel);
-    color: var(--gold-3);
-    font-size: 1.5rem;
     cursor: pointer;
 }
 .input input{
