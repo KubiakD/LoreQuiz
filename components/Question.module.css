@@ -1,0 +1,9 @@
+.question {
+  border: 2px solid;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(to left, var(--gold-4), var(--gold-3));
+  border-left: 0;
+  border-right: 0;
+  padding: var(--space-4);
+  font-size: 3rem;
+}
