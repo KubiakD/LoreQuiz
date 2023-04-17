@@ -1,0 +1,20 @@
+.scoreboard {
+    background-color: var(--grey-2);
+    max-width: 40%;
+    min-width: 30%;
+    min-height: 20%;
+    max-height: 35%;
+    padding: var(--space-10);
+    margin: 0 auto;
+    border-radius: var(--space-8);
+    font-family: var(--font-spiegel);
+    color: var(--gold-1);
+}
+.scoreboard th {
+    color: var(--gold-3);
+    font-size: 1.5rem;
+}
+.scoreboard td {
+    font-size: 1.2rem;
+    width: fit-content;
+}

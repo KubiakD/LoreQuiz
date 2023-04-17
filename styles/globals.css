@@ -49,6 +49,10 @@ h1,h2,h3,h4 {
 h1 {
   font-size: 3rem;
 }
+h2 {
+  font-size: 2.5rem;
+  color: var(--gold-3);
+}
 p,a,label {
   font-family: var(--font-spiegel);
   color: var(--gold-3);
@@ -58,4 +62,6 @@ a {
   color: inherit;
   text-decoration: none;
 }
-
+li {
+  list-style: none;
+}

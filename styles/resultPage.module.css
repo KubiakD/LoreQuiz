@@ -1,0 +1,5 @@
+.score {
+    font-family: var(--font-beaufort);
+    font-size: 2rem;
+    color: var(--gold-1);
+}
