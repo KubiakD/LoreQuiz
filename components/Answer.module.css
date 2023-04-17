@@ -1,0 +1,14 @@
+.answer {
+    background-color: var(--grey-3);
+    padding: var(--space-8);
+    cursor: pointer;
+    font-size: 2.5rem;
+}
+.input {
+    cursor: pointer;
+}
+.answer:hover,
+.input:checked + label {
+    background-color: var(--grey-2);
+    color: var(--gold-4);
+}
