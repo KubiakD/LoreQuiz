@@ -16,6 +16,7 @@ export default function QuestionPage() {
           <Answer
             answer={answer}
             name={DUMMY_DATA.questionId}
+            key={answer}
           />
         ))}
       </form>
