@@ -1,4 +1,7 @@
 .question {
+  width: fit-content;
+  max-width: 50%;
+  margin: 0 auto;
   border: 2px solid;
   border-image-slice: 1;
   border-image-source: linear-gradient(to left, var(--gold-4), var(--gold-3));
