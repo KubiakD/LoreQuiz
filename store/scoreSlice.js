@@ -11,16 +11,16 @@ export const scoreSlice = createSlice({
     initialState,
     reducers: {
         setScoreState(state, action) {
-            state.score = action.payload;
+            state.score++;
         }
     },
-    extraReducers: {
-        [HYDRATE]: (state, action) => {
+    extraReducers: (builder) => {
+        builder.addCase([HYDRATE], (state, action) => {
             return {
                 ...state,
                 ...action.payload.score
             }
-        }
+        })
     }
 });
 
