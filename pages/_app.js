@@ -2,6 +2,8 @@ import '../styles/globals.css'
 import Layout from '../components/Layout';
 import Beaufort from 'next/font/local';
 import Spiegel from 'next/font/local';
+import { wrapper } from '../store/store';
+import { Provider } from 'react-redux';
 
 const beaufort = Beaufort({
   src: '../public/fonts/BeaufortforLOL-Bold.otf',
@@ -13,13 +15,15 @@ const spiegel = Spiegel({
   variable: '--font-spiegel'
 });
 
-export default function App({ Component, pageProps }) {
+export default function App({ Component, ...rest }) {
+  const {store, props} = wrapper.useWrappedStore(rest);
   return (
     <main className={`${beaufort.variable} ${spiegel.variable}`}>
-    <Layout >
-      <Component {...pageProps} />
-    </Layout>
+      <Provider store={store}>
+        <Layout>
+          <Component {...props.pageProps} />
+        </Layout>
+      </Provider>
     </main>
-      
   );
-}
+};
