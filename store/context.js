@@ -1,4 +1,3 @@
-'use client';
 import { createContext, useState } from 'react';
 
 const DUMMY_DATA = [
@@ -32,31 +31,31 @@ export const quizContext = createContext({
   username: null,
   addOnePoint: () => {},
   nextQuestion: () => {},
-//   testFn: ()=>{}
+  previousQuestion: ()=>{},
 });
 
 function Context({ children }) {
   const [questions, setQuestions] = useState([DUMMY_DATA]);
   let [currentQuestionIndex, setCurrentQuestion] = useState(0);
-  let [test, setTest] = useState(false);
+  let [score, setScore] = useState(0);
   const addPointHandler = () => {
-    console.log('Yeah, science!')
+    setScore(score+1);
   };
   const nextQuestionHandler = () => {
     setCurrentQuestion(currentQuestionIndex+1);
   };
-//   const testHandler = () => {
-//     setTest(!test);
-//   };
+  const previousQuestionHandler = () => {
+    setCurrentQuestion(currentQuestionIndex-1);
+  };
   return (
     <quizContext.Provider
       value={{
         questions,
         currentQuestionIndex,
-        test,
-        testFn: testHandler,
+        score,
         addOnePoint: addPointHandler,
         nextQuestion: nextQuestionHandler,
+        previousQuestion: previousQuestionHandler
       }}
     >
       {children}
