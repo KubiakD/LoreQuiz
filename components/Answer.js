@@ -8,8 +8,6 @@ const Answer = (props) => {
         value={props.answer}
         name={props.name}
         className={classes.input}
-        checked={props.checked}
-        onChange={props.onChange}
           hidden
       />
       <label htmlFor={props.answer} className={classes.answer}>
