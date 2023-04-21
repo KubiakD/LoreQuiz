@@ -4,23 +4,32 @@ import Button from '../components/Button';
 import classes from '../styles/questionPage.module.css';
 import { useContext, useState } from 'react';
 import { quizContext } from '../store/context';
+import { useRouter } from 'next/router';
 
 export default function QuestionPage() {
 const ctx = useContext(quizContext);
+const router = useRouter();
 const [selectedAnswer, setSelectedAnswer] = useState(null);
-const currentQuestionIndex = ctx.currentQuestionIndex;
+const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+const [score, setScore] = useState(0);
 const question = ctx.questions[0][currentQuestionIndex];
+
 const changeHandler = event => {
   const answer = event.target.value;
   setSelectedAnswer(answer);
 };
+
 const nextQuestionHandler = () => {
-  selectedAnswer===question.correctAnswer && ctx.addOnePoint();
-  ctx.nextQuestion();
-  console.log(ctx.score)
+  if (currentQuestionIndex===3) {
+    return router.push('/result')
+  };
+ selectedAnswer===question.correctAnswer && setScore(()=>score+1);
+ setCurrentQuestionIndex(()=>currentQuestionIndex+1);
 };
+
 const previousQuestionHandler = () => {
-  ctx.previousQuestion();
+  setCurrentQuestionIndex(currentQuestionIndex-1);
+
 };
   return (
     <>
@@ -38,7 +47,7 @@ const previousQuestionHandler = () => {
       </section>
         <section className={classes.buttons}>
         <Button onClick={previousQuestionHandler}>Previous</Button>
-        <Button onClick={nextQuestionHandler}>Next</Button>
+        <Button onClick={nextQuestionHandler} button={!selectedAnswer&&{disabled: true}}>Next</Button>
         </section>
     </>
   );
