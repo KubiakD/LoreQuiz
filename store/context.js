@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 
 const DUMMY_DATA = [
   {
@@ -30,18 +30,28 @@ const DUMMY_DATA = [
 export const quizContext = createContext({
   questions: [],
   userAnswers: {},
-  setUserAnswers: () => {}
+  setUserAnswers: () => {},
+  score: 0,
 });
 
 function Context({ children }) {
   const [questions, setQuestions] = useState([DUMMY_DATA]);
   const [userAnswers, setUserAnswers] = useState({});
+  const [score, setScore] = useState(0);
+  useEffect(()=>{
+    let j=0;
+    for(let i=0; i<Object.keys(userAnswers).length; i++) {
+      questions[0][i].correctAnswer===userAnswers[i]&&j++
+    };
+    setScore(j);
+  },[userAnswers]);
   return (
     <quizContext.Provider
       value={{
         questions,
         userAnswers,
-        setUserAnswers
+        setUserAnswers,
+        score,
       }}
     >
       {children}

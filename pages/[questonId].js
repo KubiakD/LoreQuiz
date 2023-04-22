@@ -23,7 +23,6 @@ const changeHandler = event => {
 const nextQuestionHandler = () => {
   ctx.userAnswers[currentQuestionIndex] = selectedAnswer;
   ctx.setUserAnswers({...ctx.userAnswers});
-  console.log(ctx.userAnswers);
   if (currentQuestionIndex===3) {
     return router.push('/result')
   };
