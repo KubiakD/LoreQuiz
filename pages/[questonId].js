@@ -10,13 +10,14 @@ export default function QuestionPage() {
 const ctx = useContext(quizContext);
 const router = useRouter();
 const [selectedAnswer, setSelectedAnswer] = useState(null);
+const [answerIsSelected, setAnswerIsSelected] = useState(false);
 const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-const [score, setScore] = useState(0);
 const question = ctx.questions[0][currentQuestionIndex];
 
 const changeHandler = event => {
   const answer = event.target.value;
   setSelectedAnswer(answer);
+  setAnswerIsSelected(true);
 };
 
 const nextQuestionHandler = () => {
@@ -26,11 +27,12 @@ const nextQuestionHandler = () => {
   if (currentQuestionIndex===3) {
     return router.push('/result')
   };
- selectedAnswer===question.correctAnswer && setScore(score+1);
  setCurrentQuestionIndex(currentQuestionIndex+1);
+ setAnswerIsSelected(false);
 };
 
 const previousQuestionHandler = () => {
+  setAnswerIsSelected(false);
   setCurrentQuestionIndex(currentQuestionIndex-1);
 
 };
@@ -50,7 +52,7 @@ const previousQuestionHandler = () => {
       </section>
         <section className={classes.buttons}>
         <Button onClick={previousQuestionHandler}>Previous</Button>
-        <Button onClick={nextQuestionHandler} button={!selectedAnswer&&{disabled: true}}>Next</Button>
+        <Button onClick={nextQuestionHandler} button={!answerIsSelected&&{disabled: true}}>Next</Button>
         </section>
     </>
   );
