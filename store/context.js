@@ -29,14 +29,19 @@ const DUMMY_DATA = [
 
 export const quizContext = createContext({
   questions: [],
+  userAnswers: {},
+  setUserAnswers: () => {}
 });
 
 function Context({ children }) {
   const [questions, setQuestions] = useState([DUMMY_DATA]);
+  const [userAnswers, setUserAnswers] = useState({});
   return (
     <quizContext.Provider
       value={{
         questions,
+        userAnswers,
+        setUserAnswers
       }}
     >
       {children}
