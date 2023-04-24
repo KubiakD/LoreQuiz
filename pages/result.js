@@ -29,7 +29,7 @@ export default function ResultPage () {
       <h2>Your result</h2>
       <span
         className={classes.score}
-      >{`${score}/${DUMMY_DATA.maxPoints}`}</span>
+      >{`${score}/${Object.keys(ctx.userAnswers).length}`}</span>
       <h2>Scoreboard</h2>
       <Scoreboard ranking={ctx.ranking} />
       <Button onClick={clickHandler}>Play again</Button>
