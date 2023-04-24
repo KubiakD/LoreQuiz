@@ -10,8 +10,8 @@ export default function Home() {
   const submitHandler = event => {
     event.preventDefault();
     const enteredName = event.target[0].value;
-    ctx.setUsername(enteredName);
-    router.push('/result');
+    ctx.setScore({...ctx.score, name: enteredName});
+    router.push('/questions');
   };
   return (
     <>
