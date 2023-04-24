@@ -28,6 +28,8 @@ const DUMMY_DATA = [
 ];
 
 export const quizContext = createContext({
+  username: '',
+  setUsername: ()=> {},
   questions: [],
   userAnswers: {},
   setUserAnswers: () => {},
@@ -38,6 +40,7 @@ function Context({ children }) {
   const [questions, setQuestions] = useState([DUMMY_DATA]);
   const [userAnswers, setUserAnswers] = useState({});
   const [score, setScore] = useState(0);
+  const [username, setUsername] = useState('Mysterious Summoner');
   useEffect(()=>{
     let j=0;
     for(let i=0; i<Object.keys(userAnswers).length; i++) {
@@ -48,6 +51,8 @@ function Context({ children }) {
   return (
     <quizContext.Provider
       value={{
+        username,
+        setUsername,
         questions,
         userAnswers,
         setUserAnswers,
