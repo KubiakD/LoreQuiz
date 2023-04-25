@@ -3,5 +3,13 @@
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
     gap: var(--space-10);
+}
+@media (max-width: 600px) {
+    .answers {
+        justify-content: center;
+        max-width: 95vw;
+        /* width: 90vw; */
+    }
 }

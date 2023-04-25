@@ -10,3 +10,15 @@
   padding: var(--space-4);
   font-size: 3rem;
 }
+@media (max-width: 600px) {
+  .question{
+    max-width: unset;
+    width: 100vw;
+    background-color: var(--blue-7);
+  }
+}
+@media (max-width: 768px) and (min-height:668px) {
+  .question {
+    font-size: 3.4rem;
+    }
+}

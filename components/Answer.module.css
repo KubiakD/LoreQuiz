@@ -12,3 +12,21 @@
     background-color: var(--grey-2);
     color: var(--gold-4);
 }
+@media (max-width: 600px) {
+    .answer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: var(--space-4);
+    }
+}
+@media (max-width: 600px) and (min-height:668px) {
+    .answer {
+        font-size: 3rem;
+    }
+}
+@media (max-width: 361px) {
+    .answer {
+        font-size: 2.5rem;
+    }
+}

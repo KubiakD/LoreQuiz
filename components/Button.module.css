@@ -22,3 +22,8 @@ border-color: var(--gold-5);
 color: var(--gold-5);
 background-color: var(--grey-3);
 }
+@media (max-width: 600px) {
+    .button {
+        width: 13rem;
+    }
+}

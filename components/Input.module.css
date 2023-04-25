@@ -22,3 +22,8 @@
     outline: none;
     border-bottom: 3px solid var(--gold-3);
 }
+@media (max-width: 768px) {
+ .input input {
+    width: 80%;
+ }   
+}

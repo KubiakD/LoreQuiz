@@ -3,4 +3,5 @@
     justify-content: space-around;
     gap: var(--space-10);
     margin: 0 auto;
+    max-width: 95vw;
 }
