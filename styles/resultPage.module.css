@@ -1,6 +1,6 @@
 .score {
     font-family: var(--font-beaufort);
-    font-size: 2rem;
+    font-size: 2.5rem;
     color: var(--gold-1);
 }
 @media (max-width: 600px) {

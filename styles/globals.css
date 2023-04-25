@@ -47,10 +47,10 @@ h1,h2,h3,h4 {
   color: var(--gold-4);
 }
 h1 {
-  font-size: 3rem;
+  font-size: 4rem;
 }
 h2 {
-  font-size: 2.5rem;
+  font-size: 3rem;
   color: var(--gold-3);
 }
 p,a,label {
