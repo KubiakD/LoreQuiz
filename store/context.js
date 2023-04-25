@@ -27,10 +27,20 @@ const DUMMY_DATA = [
   },
 ];
 
+export const questionsContext = createContext();
+
+export const QuestionsProvider = ({children}) => {
+  const [questions, setQuestions] = useState(DUMMY_DATA);
+  return (
+    <questionsContext.Provider value={{questions}}>
+      {children}
+    </questionsContext.Provider>
+  );
+};
+
 export const quizContext = createContext({
   username: '',
   setUsername: ()=> {},
-  questions: [],
   userAnswers: {},
   setUserAnswers: () => {},
   score: {},
@@ -39,7 +49,6 @@ export const quizContext = createContext({
 });
 
 function Context({ children }) {
-  const [questions, setQuestions] = useState([DUMMY_DATA]);
   const [userAnswers, setUserAnswers] = useState({});
   const [score, setScore] = useState({ name: 'Mysterious Summoner', score: 0 });
   const [ranking, setRanking] = useState([]);
@@ -53,7 +62,6 @@ function Context({ children }) {
   return (
     <quizContext.Provider
       value={{
-        questions,
         userAnswers,
         setUserAnswers,
         score,

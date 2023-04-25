@@ -3,14 +3,14 @@ import Answer from '../components/Answer';
 import ButtonsSection from '../components/Prev&NextButtons';
 import classes from '../styles/questionPage.module.css';
 import { useContext, useState } from 'react';
-import { quizContext } from '../store/context';
+import { quizContext, questionsContext } from '../store/context';
 
 export default function QuestionPage() {
   const ctx = useContext(quizContext);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [answerIsSelected, setAnswerIsSelected] = useState(false);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const question = ctx.questions[0][currentQuestionIndex];
+  const question = useContext(questionsContext).questions[currentQuestionIndex];
 
   const changeHandler = (event) => {
     const answer = event.target.value;
