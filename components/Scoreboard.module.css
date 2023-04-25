@@ -13,14 +13,24 @@
 .scoreboard th {
     color: var(--gold-3);
     font-size: 1.5rem;
+    text-shadow: 0px 0px 2px var(--black);
 }
 .scoreboard td {
     font-size: 1.2rem;
     width: fit-content;
+    text-shadow: 0px 0px 2px var(--black);
 }
-@media (max-width: 600px) {
+@media (max-width: 992px) {
     .scoreboard {
         max-width: 95%;
         min-width: 80%;
+    }
+}
+@media (min-width: 601px) and (max-width: 992px) {
+    .scoreboard th {
+        font-size: 2rem;
+    }
+    .scoreboard td {
+        font-size: 1.8rem;
     }
 }

@@ -18,7 +18,7 @@
     justify-content: center;
     gap: 1.25rem;
 }
-@media (max-width: 768px) {
+@media (max-width: 820px) {
     .layout>a {
         display: none;
     }
@@ -27,4 +27,7 @@
     .content {
         gap: 1.5rem;
     }
+}
+@media (min-width: 601px) and (max-width: 992px) {
+  
 }

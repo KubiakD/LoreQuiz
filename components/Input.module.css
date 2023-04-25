@@ -27,3 +27,9 @@
     width: 80%;
  }   
 }
+@media (min-width: 601px) and (max-width: 992px) {
+    .input input {
+        width: 85%;
+        font-size: 3rem;
+    }
+}

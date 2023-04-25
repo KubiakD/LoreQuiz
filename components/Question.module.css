@@ -22,3 +22,11 @@
     font-size: 3.4rem;
     }
 }
+@media (min-width: 601px) and (max-width: 992px) {
+  .question {
+    font-size: 4rem;
+    max-width: unset;
+    width: 100%;
+    background-color: var(--blue-7);
+  }
+}
