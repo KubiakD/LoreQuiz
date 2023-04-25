@@ -65,3 +65,29 @@ a {
 li {
   list-style: none;
 }
+
+@media (max-width: 600px) and (min-height: 740px) {
+    body {
+      background-size: 125vmax, 250vmin;
+    }
+    h1 {
+      font-size: 4.2rem;
+    }
+    h2 {
+      font-size: 3.2rem;
+    }
+    p,a,label {
+  font-size: 2.2rem;
+}
+}
+@media (min-width: 601px) and (max-width: 992px) {
+  h1 {
+      font-size: 4.5rem;
+    }
+    h2 {
+      font-size: 4rem;
+    }
+    p,a,label {
+    font-size: 3rem;
+}
+}
