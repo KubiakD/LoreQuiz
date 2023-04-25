@@ -3,3 +3,8 @@
     font-size: 2rem;
     color: var(--gold-1);
 }
+@media (max-width: 600px) {
+    .score {
+        font-size: 3.5rem;
+    }
+}

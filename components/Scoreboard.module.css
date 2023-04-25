@@ -18,3 +18,9 @@
     font-size: 1.2rem;
     width: fit-content;
 }
+@media (max-width: 600px) {
+    .scoreboard {
+        max-width: 95%;
+        min-width: 80%;
+    }
+}
