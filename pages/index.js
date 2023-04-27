@@ -7,7 +7,9 @@ import Button from '../components/Button';
 import classes from '../styles/index.module.css';
 export default function Home(props) {
   const ctx = useContext(quizContext);
-  ctx.setQuestions(props.questions);
+  useEffect(()=>{
+    ctx.setQuestions(props.questions);
+  },[]);
   const router = useRouter();
   const submitHandler = event => {
     event.preventDefault();
