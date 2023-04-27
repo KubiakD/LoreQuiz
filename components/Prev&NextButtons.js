@@ -10,7 +10,7 @@ const ButtonsSection = props => {
     const nextQuestionHandler = () => {
       ctx.userAnswers[props.currentQuestionIndex] = props.selectedAnswer;
       ctx.setUserAnswers({ ...ctx.userAnswers });
-      if (props.currentQuestionIndex === 3) {
+      if (props.currentQuestionIndex === ctx.questions.length-1) {
         return router.push('/result');
       }
       props.setCurrentQuestionIndex(props.currentQuestionIndex + 1);

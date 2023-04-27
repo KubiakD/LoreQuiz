@@ -1,12 +1,13 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { quizContext } from '../store/context';
 import { useRouter } from 'next/router';
 import { MongoClient } from 'mongodb';
 import Input from '../components/Input';
 import Button from '../components/Button';
 import classes from '../styles/index.module.css';
-export default function Home() {
+export default function Home(props) {
   const ctx = useContext(quizContext);
+  ctx.setQuestions(props.questions);
   const router = useRouter();
   const submitHandler = event => {
     event.preventDefault();
@@ -27,7 +28,7 @@ export default function Home() {
 export const getServerSideProps = async () => {
   const client = await MongoClient.connect(process.env.MONGO_URI);
   const db = client.db().collection('questions');
-  const questions = await db.aggregate([{ $sample: { size: 10 } }]).toArray();
+  const questions = await db.aggregate([{ $sample: { size: 6 } }]).toArray();
   client.close();
   return {
     props: {
