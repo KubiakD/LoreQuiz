@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import classes from './Button.module.css';
 
 const Button = (props) => {
@@ -11,5 +12,9 @@ const Button = (props) => {
     </button>
   );
 };
-
+export const LinkBtn = props => {
+  return (
+    <Link className={classes.button} href={props.href}>{props.children}</Link>
+  )
+};
 export default Button;

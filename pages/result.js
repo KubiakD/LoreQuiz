@@ -1,6 +1,6 @@
 import classes from '../styles/resultPage.module.css';
 import Scoreboard from '../components/Scoreboard';
-import Button from '../components/Button';
+import Button, {LinkBtn} from '../components/Button';
 import { useContext, useEffect } from 'react';
 import { quizContext } from '../store/context';
 import { useRouter } from 'next/router';
@@ -32,7 +32,7 @@ export default function ResultPage () {
       >{`${score}/${Object.keys(ctx.userAnswers).length}`}</span>
       <h2>Scoreboard</h2>
       <Scoreboard ranking={ctx.ranking} />
-      <Button onClick={()=>{router.push('/correct-answers')}}>See correct answers</Button>
+      <LinkBtn href={'/correct-answers'}>See correct answers</LinkBtn>
       <Button onClick={clickHandler}>Play again</Button>
     </>
   );
