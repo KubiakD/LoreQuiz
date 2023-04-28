@@ -1,0 +1,16 @@
+.answer {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-10);
+    background-color: var(--grey-3);
+    padding: var(--space-8);
+    border-radius: var(--space-8);
+    margin: 0 auto;
+    width: 30%;
+}
+.answer p {
+    text-align: left;
+}
+.answer h2 {
+    font-size: 2rem;
+}
