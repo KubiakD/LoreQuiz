@@ -4,9 +4,9 @@
     gap: var(--space-10);
     background-color: var(--grey-3);
     padding: var(--space-8);
-    border-radius: var(--space-8);
+    border-radius: var(--space-8) var(--space-8) 0 0;
     margin: 0 auto;
-    width: 30%;
+    width: 30rem;
 }
 .answer p {
     text-align: left;

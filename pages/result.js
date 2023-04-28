@@ -32,6 +32,7 @@ export default function ResultPage () {
       >{`${score}/${Object.keys(ctx.userAnswers).length}`}</span>
       <h2>Scoreboard</h2>
       <Scoreboard ranking={ctx.ranking} />
+      <Button onClick={()=>{router.push('/correct-answers')}}>See correct answers</Button>
       <Button onClick={clickHandler}>Play again</Button>
     </>
   );
