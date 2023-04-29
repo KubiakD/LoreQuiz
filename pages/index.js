@@ -1,7 +1,8 @@
-import { useContext, useEffect } from 'react';
-import { quizContext } from '../store/context';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
+import { useContext, useEffect } from 'react';
 import { MongoClient } from 'mongodb';
+import { quizContext } from '../store/context';
 import Input from '../components/Input';
 import Button from '../components/Button';
 import classes from '../styles/index.module.css';
@@ -19,10 +20,13 @@ export default function Home(props) {
   };
   return (
     <>
+      <Head>
+        <title>Welcome to LoreQuiz</title>
+      </Head>
       <h1>Welcome to LoreQuiz</h1>
       <form className={classes.form} onSubmit={submitHandler}>
-      <Input label='Enter your name to begin' input={{id: 'username'}} />
-      <Button>Submit</Button>
+        <Input label='Enter your name to begin' input={{ id: 'username' }} />
+        <Button>Submit</Button>
       </form>
     </>
   );

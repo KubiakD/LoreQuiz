@@ -1,9 +1,10 @@
+import Head from 'next/head';
+import { useContext, useState } from 'react';
+import { quizContext } from '../store/context';
 import Question from '../components/Question';
 import Answer from '../components/Answer';
 import ButtonsSection from '../components/Prev&NextButtons';
 import classes from '../styles/questionPage.module.css';
-import { useContext, useState } from 'react';
-import { quizContext } from '../store/context';
 
 export default function QuestionPage() {
   const ctx = useContext(quizContext);
@@ -19,6 +20,9 @@ export default function QuestionPage() {
 
   return (
     <>
+      <Head>
+        <title>Questions</title>
+      </Head>
       <Question question={question.question} />
       <section className={classes.answers}>
         {question.answers.map((answer) => (

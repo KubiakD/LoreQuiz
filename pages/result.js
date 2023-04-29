@@ -1,9 +1,10 @@
-import classes from '../styles/resultPage.module.css';
-import Scoreboard from '../components/Scoreboard';
-import Button, {LinkBtn} from '../components/Button';
+import { useRouter } from 'next/router';
+import Head from 'next/head';
 import { useContext, useEffect } from 'react';
 import { quizContext } from '../store/context';
-import { useRouter } from 'next/router';
+import Scoreboard from '../components/Scoreboard';
+import Button, {LinkBtn} from '../components/Button';
+import classes from '../styles/resultPage.module.css';
 export default function ResultPage () {
   const ctx = useContext(quizContext);
   const score = ctx.score.score;
@@ -26,10 +27,13 @@ export default function ResultPage () {
   };
   return (
     <>
+      <Head>
+        <title>Result</title>
+      </Head>
       <h2>Your result</h2>
-      <span
-        className={classes.score}
-      >{`${score}/${Object.keys(ctx.userAnswers).length}`}</span>
+      <span className={classes.score}>{`${score}/${
+        Object.keys(ctx.userAnswers).length
+      }`}</span>
       <h2>Scoreboard</h2>
       <Scoreboard ranking={ctx.ranking} />
       <LinkBtn href={'/correct-answers'}>See correct answers</LinkBtn>
