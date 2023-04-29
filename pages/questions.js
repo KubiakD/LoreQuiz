@@ -21,7 +21,7 @@ export default function QuestionPage() {
   return (
     <>
       <Head>
-        <title>Questions</title>
+        <title>{`Question ${currentQuestionIndex+1}`}</title>
       </Head>
       <Question question={question.question} />
       <section className={classes.answers}>
