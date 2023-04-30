@@ -34,13 +34,6 @@ html,
 body {
   max-width: 100vw;
   min-height: 100vh;
-  background-color: var(--blue-7);
-  background-image: url('../public/Icon_Metal_Circle.svg'),url('../public/Icon_Metal_Diamond.svg');
-  background-repeat: no-repeat;
-  /* background-size: 1900px, 1800px; */
-  background-size: 125vmax, 115vmax;
-  background-position: center;
-  overflow-x: hidden;
 }
 h1,h2,h3,h4 {
   font-family: var(--font-beaufort);
@@ -67,9 +60,6 @@ li {
 }
 
 @media (max-width: 600px) and (min-height: 740px) {
-    body {
-      background-size: 125vmax, 250vmin;
-    }
     h1 {
       font-size: 4.2rem;
     }
