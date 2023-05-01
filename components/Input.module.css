@@ -9,7 +9,7 @@
 .input input{
     padding: var(--space-8);
     margin: 0 auto;
-    background-color: var(--blue-7);
+    background-color: transparent;
     color: var(--gold-3);
     width: 35%;
     border: none;

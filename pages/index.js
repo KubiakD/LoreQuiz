@@ -24,7 +24,7 @@ export default function Home(props) {
         <title>Welcome to LoreQuiz</title>
       </Head>
       <h1>Welcome to LoreQuiz</h1>
-      <form className={classes.form} onSubmit={submitHandler}>
+      <form className={classes.form} onSubmit={submitHandler} autoComplete='off'>
         <Input label='Enter your name to begin' input={{ id: 'username' }} />
         <Button>Submit</Button>
       </form>
@@ -34,7 +34,7 @@ export default function Home(props) {
 export const getServerSideProps = async () => {
   const client = await MongoClient.connect(process.env.MONGO_URI);
   const db = client.db().collection('questions');
-  const questions = await db.aggregate([{ $sample: { size: 6 } }]).toArray();
+  const questions = await db.aggregate([{ $sample: { size: 10 } }]).toArray();
   client.close();
   return {
     props: {
