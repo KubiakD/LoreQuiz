@@ -36,9 +36,12 @@ export const getServerSideProps = async () => {
   const db = client.db().collection('questions');
   const questions = await db.aggregate([{ $sample: { size: 10 } }]).toArray();
   client.close();
+  const modifiedAnswers = questions.map(question => {
+    question.answers.sort(()=>Math.random()- .5);
+  });
   return {
     props: {
-      questions: JSON.parse(JSON.stringify(questions)),
+      questions: JSON.parse(JSON.stringify(modifiedAnswers)),
     },
   };
 };
