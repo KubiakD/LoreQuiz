@@ -23,7 +23,7 @@ export default function QuestionPage() {
   return (
     <>
       <Head>
-        <title>{`Question ${currentQuestionIndex+1}`}</title>
+        <title>{`Question ${currentQuestionIndex+1}/10`}</title>
       </Head>
       <Question question={question.question} />
       <section className={classes.answers}>
