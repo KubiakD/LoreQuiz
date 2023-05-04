@@ -17,7 +17,9 @@ export default function QuestionPage() {
     setSelectedAnswer(answer);
     setAnswerIsSelected(true);
   };
-
+  if (!ctx.questions || ctx.questions.length === 0) {
+    return <h1>Something went wrong.</h1>;
+  }
   return (
     <>
       <Head>
