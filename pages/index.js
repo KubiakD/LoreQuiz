@@ -11,9 +11,9 @@ export default function Home(props) {
   useEffect(()=>{
     for (const question of props.questions) {
       question.answers.sort(() => Math.random() - 0.5);
+      ctx.setQuestions(props.questions);
     }
   },[]);
-  ctx.setQuestions(props.questions);
   const router = useRouter();
   const submitHandler = event => {
     event.preventDefault();
