@@ -9,8 +9,11 @@ import classes from '../styles/index.module.css';
 export default function Home(props) {
   const ctx = useContext(quizContext);
   useEffect(()=>{
-    ctx.setQuestions(props.questions);
+    for (const question of props.questions) {
+      question.answers.sort(() => Math.random() - 0.5);
+    }
   },[]);
+  ctx.setQuestions(props.questions);
   const router = useRouter();
   const submitHandler = event => {
     event.preventDefault();
@@ -36,9 +39,6 @@ export const getServerSideProps = async () => {
   const db = client.db().collection('questions');
   const questions = await db.aggregate([{ $sample: { size: 10 } }]).toArray();
   client.close();
-  for (const question of questions) {
-    question.answers.sort(() => Math.random() - 0.5);
-  }
   return {
     props: {
       questions: JSON.parse(JSON.stringify(questions)),
