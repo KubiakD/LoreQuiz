@@ -4,7 +4,8 @@
 * [Setup](#setup)
 
 ## General info
-This is my first portfolio project. It is a quiz app about League of Legends lore
+#### This project is not fully optimized for mobile devices... yet. 
+This is my first portfolio project. It is a quiz app about League of Legends lore.
 When starting a quiz, the application fetches 10 random questions from the database (new questions are added all the time!), 
 and then shows the user his result, compares it with the results of others, and also gives the opportunity to check the correct answers.
 
