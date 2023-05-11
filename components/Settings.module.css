@@ -23,5 +23,6 @@
   overflow: auto;
   display: flex;
   flex-direction: column;
-  gap: var(--space-10);
+  /* gap: var(--space-10); */
+  gap: 1rem;
 }

@@ -7,3 +7,20 @@ export default function Input(props) {
       </div>
     );
 };
+export const SelectInput = props => {
+  return (
+    <div>
+      <label htmlFor={props.input.id}>{props.label}</label>
+        <select
+          className={classes.select}
+          {...props.input}
+          name={props.input.id}
+        >
+          {props.options.map((option) => (
+            <option value={option}>{option}</option>
+          ))}
+          ;
+        </select>
+        </div>
+  );
+};
