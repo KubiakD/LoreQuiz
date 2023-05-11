@@ -3,6 +3,7 @@ import Head from 'next/head';
 import { useContext, useEffect, useState } from 'react';
 import { MongoClient } from 'mongodb';
 import { quizContext } from '../store/context';
+import Settings from '../components/Settings';
 import Input from '../components/Input';
 import Button from '../components/Button';
 import classes from '../styles/index.module.css';
@@ -24,7 +25,6 @@ export default function Home(props) {
   };
   const changeHandler = event => {
     const enteredValue = event.target.value.trim();
-    console.log('yeah science');
     if(enteredValue || enteredValue!=='') {
       setInputIsEmpty(state=>false);
     } else {
@@ -36,11 +36,13 @@ export default function Home(props) {
       <Head>
         <title>Welcome to LoreQuiz</title>
       </Head>
+      <Settings />
       <h1>Welcome to LoreQuiz</h1>
       <form className={classes.form} onSubmit={submitHandler} autoComplete='off'>
         <Input label='Enter your name to begin' input={{ id: 'username' }} onChange={changeHandler} />
         <Button button={inputIsEmpty && {disabled: true}}>Submit</Button>
       </form>
+      <Button>Settings</Button>
     </>
   );
 }
