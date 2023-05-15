@@ -38,7 +38,7 @@
     font-family: var(--font-spiegel);
     font-size: 1.75rem;
     bottom: -10px;
-    content: attr(max);
+    content: attr(value);
     right: 0;
     transform: translate(calc(100% + 5px))
 }

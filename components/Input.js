@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import classes from './Input.module.css';
 export default function Input(props) {
     return (
@@ -25,11 +26,15 @@ export const SelectInput = props => {
   );
 };
 export const RangeInput = props => {
+  const [value, setValue] = useState(0);
+  const changeHandler = event => {
+    setValue(curValue => event.target.value)
+  };
   return (
     <>
       <label htmlFor={props.input.id}>{props.label}</label>
       <div className={classes.range}>
-        <input type='range' min={props.min} max={props.max} />
+        <input type='range' min={props.min} max={props.max} value={value} onChange={changeHandler}/>
        </div>
     </>
   );
