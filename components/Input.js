@@ -17,10 +17,20 @@ export const SelectInput = props => {
           name={props.input.id}
         >
           {props.options.map((option) => (
-            <option value={option}>{option}</option>
+            <option value={option} key={option}>{option}</option>
           ))}
           ;
         </select>
         </div>
+  );
+};
+export const RangeInput = props => {
+  return (
+    <>
+      <label htmlFor={props.input.id}>{props.label}</label>
+      <div className={classes.range}>
+        <input type='range' min={props.min} max={props.max} />
+       </div>
+    </>
   );
 };

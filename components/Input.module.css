@@ -23,6 +23,47 @@
     outline: none;
     border-bottom: 3px solid var(--gold-3);
 }
+.range input{ 
+    -ms-appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+}
+.range input::after {
+    position: absolute;
+    color: var(--gold-3);
+    font-family: var(--font-spiegel);
+    font-size: 1.75rem;
+    bottom: -10px;
+    content: attr(max);
+    right: 0;
+    transform: translate(calc(100% + 5px))
+}
+/* .range input::-moz-range-track,  */
+/* .range input::-ms-track, */
+.range input::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 4px;
+    background: transparent;
+    background-color: var(--gold-4);
+    -webkit-appearance: none;
+}
+/* .range input::-moz-range-thumb, */
+/* .range input::-ms-thumb, */
+.range input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: none;
+    box-shadow: none;
+    height: 15px;
+    width: 5px;
+    border-radius: 12px;
+    background: var(--gold-5);
+    margin: -7px 0 0 0;
+    outline: none;
+}
 .select {
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -39,7 +80,6 @@
     font-family: var(--font-spiegel);
     font-size: 1.5rem;
 };
-
 @media (max-width: 768px) {
  .input input {
     width: 80%;
