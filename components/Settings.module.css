@@ -26,3 +26,11 @@
   /* gap: var(--space-10); */
   gap: 1rem;
 }
+
+.btnControl {
+  display: flex;
+  gap: 1rem;
+}
+.btnControl button {
+  width: 8rem;
+}

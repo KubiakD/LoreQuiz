@@ -1,15 +1,16 @@
 import { useRouter } from 'next/router';
 import Head from 'next/head';
+import dynamic from 'next/dynamic';
 import { useContext, useEffect, useState } from 'react';
 import { MongoClient } from 'mongodb';
 import { quizContext } from '../store/context';
-import Settings from '../components/Settings';
 import Input from '../components/Input';
 import Button from '../components/Button';
 import classes from '../styles/index.module.css';
 export default function Home(props) {
   const ctx = useContext(quizContext);
   const router = useRouter();
+
   const [inputIsEmpty, setInputIsEmpty] = useState(true);
   useEffect(()=>{
     for (const question of props.questions) {
@@ -17,12 +18,14 @@ export default function Home(props) {
       ctx.setQuestions(props.questions);
     }
   },[]);
+
   const submitHandler = event => {
     event.preventDefault();
     const enteredName = event.target[0].value;
     ctx.setScore({...ctx.score, name: enteredName});
     router.push('/questions');
   };
+
   const changeHandler = event => {
     const enteredValue = event.target.value.trim();
     if(enteredValue || enteredValue!=='') {
@@ -31,18 +34,24 @@ export default function Home(props) {
       setInputIsEmpty(state=>true)
     };
   };
+
+  const Settings = dynamic(()=>import('../components/Settings'));
+  const [openSettings, setOpenSettings] = useState(false);
+  const settingsHandler = () => {
+    setOpenSettings(curState => true);
+  };
   return (
     <>
       <Head>
         <title>Welcome to LoreQuiz</title>
       </Head>
-      <Settings />
+      { openSettings && <Settings setOpenSettings={setOpenSettings}/> }
       <h1>Welcome to LoreQuiz</h1>
       <form className={classes.form} onSubmit={submitHandler} autoComplete='off'>
         <Input label='Enter your name to begin' input={{ id: 'username' }} onChange={changeHandler} />
         <Button button={inputIsEmpty && {disabled: true}}>Submit</Button>
       </form>
-      <Button>Settings</Button>
+      <Button onClick={settingsHandler}>Settings</Button>
     </>
   );
 }
