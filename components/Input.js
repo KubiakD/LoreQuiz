@@ -9,6 +9,9 @@ export default function Input(props) {
     );
 };
 export const SelectInput = props => {
+  const changeHandler = event => {
+    props.setSelectedDifLevel(curValue => event.target.value )
+  };
   return (
     <div>
       <label htmlFor={props.input.id}>{props.label}</label>
@@ -16,6 +19,7 @@ export const SelectInput = props => {
           className={classes.select}
           {...props.input}
           name={props.input.id}
+          onChange={changeHandler}
         >
           {props.options.map((option) => (
             <option value={option} key={option}>{option}</option>

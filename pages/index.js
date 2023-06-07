@@ -10,6 +10,7 @@ import classes from '../styles/index.module.css';
 export default function Home(props) {
   const ctx = useContext(quizContext);
   const router = useRouter();
+  const quantities = props.quantities;
 
   const [inputIsEmpty, setInputIsEmpty] = useState(true);
   useEffect(()=>{
@@ -45,13 +46,13 @@ export default function Home(props) {
       <Head>
         <title>Welcome to LoreQuiz</title>
       </Head>
-      { openSettings && <Settings setOpenSettings={setOpenSettings}/> }
+      { openSettings && <Settings setOpenSettings={setOpenSettings} max={quantities} /> }
       <h1>Welcome to LoreQuiz</h1>
+      <Button onClick={settingsHandler}>Settings</Button>
       <form className={classes.form} onSubmit={submitHandler} autoComplete='off'>
         <Input label='Enter your name to begin' input={{ id: 'username' }} onChange={changeHandler} />
         <Button button={inputIsEmpty && {disabled: true}}>Submit</Button>
       </form>
-      <Button onClick={settingsHandler}>Settings</Button>
     </>
   );
 }
@@ -59,10 +60,18 @@ export const getServerSideProps = async () => {
   const client = await MongoClient.connect(process.env.MONGO_URI);
   const db = client.db().collection('questions');
   const questions = await db.aggregate([{ $sample: { size: 10 } }]).toArray();
+  const easyQuestionsQuantity = await db.countDocuments({difficultyLevel: 'easy'});
+  const mediumQuestionsQuantity = await db.countDocuments({difficultyLevel: 'medium'});
+  const hardQuestionsQuantity = await db.countDocuments({difficultyLevel: 'hard'});
   client.close();
   return {
     props: {
       questions: JSON.parse(JSON.stringify(questions)),
+      quantities: {
+        easy:easyQuestionsQuantity,
+        medium:mediumQuestionsQuantity,
+        hard:hardQuestionsQuantity
+      }
     },
   };
 };
