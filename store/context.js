@@ -10,7 +10,7 @@ export const quizContext = createContext({
   setRanking: ()=>{}
 });
 
-function Context({ children }) {
+export default function Context({ children }) {
   const [questions, setQuestions] = useState([]);
   const [userAnswers, setUserAnswers] = useState({});
   const [score, setScore] = useState({ name: 'Mysterious Summoner', score: 0 });
@@ -39,4 +39,3 @@ function Context({ children }) {
     </quizContext.Provider>
   );
 };
-export default Context;
