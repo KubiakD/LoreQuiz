@@ -4,11 +4,15 @@ import dynamic from 'next/dynamic';
 import { useContext, useEffect, useState } from 'react';
 import { MongoClient } from 'mongodb';
 import { quizContext } from '../store/context';
+import settingsCtx from '../store/userSettings';
+import { settingsContextConfig } from '../store/userSettings';
 import Input from '../components/Input';
 import Button from '../components/Button';
 import classes from '../styles/index.module.css';
 export default function Home(props) {
   const ctx = useContext(quizContext);
+  const settings = useContext(settingsContextConfig);
+  console.log(settings);
   const router = useRouter();
   const quantities = props.quantities;
 
@@ -42,7 +46,7 @@ export default function Home(props) {
     setOpenSettings(curState => true);
   };
   return (
-    <>
+    <settingsCtx>
       <Head>
         <title>Welcome to LoreQuiz</title>
       </Head>
@@ -53,7 +57,7 @@ export default function Home(props) {
         <Input label='Enter your name to begin' input={{ id: 'username' }} onChange={changeHandler} />
         <Button button={inputIsEmpty && {disabled: true}}>Submit</Button>
       </form>
-    </>
+    </settingsCtx>
   );
 }
 export const getServerSideProps = async () => {
