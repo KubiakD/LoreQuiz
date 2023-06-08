@@ -38,7 +38,7 @@ export const RangeInput = props => {
     <>
       <label htmlFor={props.input.id}>{props.label}</label>
       <div className={classes.range}>
-        <input type='range' min={props.min} max={props.max} value={value} onChange={changeHandler}/>
+        <input type='range' min={props.min} max={props.max} value={value || 10} onChange={changeHandler}/>
        </div>
     </>
   );
