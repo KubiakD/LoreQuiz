@@ -1,24 +1,38 @@
+import { settingsContextConfig } from '../store/userSettings';
 import { SelectInput, RangeInput } from './Input';
 import Button from './Button';
 import classes from './Settings.module.css';
-import { useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 const Settings = props => {
+    const {settings, setSettings} = useContext(settingsContextConfig);
     const options = ['easy', 'medium', 'hard'];
     const [selectedDifLevel, setSelectedDifLevel] = useState('easy');
     const quantities = props.max;
     const cancelHandler = () => {
-        props.setOpenSettings(curState => false);
+        props.setOpenSettings(state => false);
+    };
+    const submitHandler = event => {
+        event.preventDefault();
+        const selectInputValue = event.target[0].value;
+        const rangeInputValue = event.target[1].value;
+        const newSettings = {
+            difLevel: selectInputValue,
+            questionsQuantity: rangeInputValue
+        };
+        setSettings(state => ({...state, ...newSettings}));
+        console.log(settings)
+        props.setOpenSettings(state=>false);
     };
     return (
         <div className={classes.backdrop}>
-        <section className={classes.overlay}>
-            <SelectInput label='Difficulty level' input={{id: 'difLevel'}} options={options} setSelectedDifLevel={setSelectedDifLevel} />
+        <form className={classes.overlay} onSubmit={submitHandler}>
+            <SelectInput label='Difficulty level' input={{id: 'difLevel', value: selectedDifLevel}} options={options} setSelectedDifLevel={setSelectedDifLevel} />
             <RangeInput input={{id: 'quantity'}} label='Number of questions' min='4' max={quantities[`${selectedDifLevel}`]} />
             <div className={classes.btnControl}>
             <Button>Save</Button>
-            <Button onClick={cancelHandler}>Cancel</Button>
+            <Button button={{type: 'reset'}} onClick={cancelHandler}>Cancel</Button>
             </div>
-        </section>
+        </form>
         </div>
     );
 }; 

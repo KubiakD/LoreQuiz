@@ -1,21 +1,24 @@
-import { createContext, useContext } from 'react';
+import { createContext, useState } from 'react';
 export const settingsContextConfig = createContext({
-  difLevel: 'easy',
-  questionsQuantity: 10,
+  settings: {
+    difLevel: 'easy',
+    questionsQuantity: 10 
+    },
+  setSettings: ()=>{}
 });
-export default function settingsCtx({ children }) {
-  const [difLevel, setDifLevel] = useContext('easy');
-  const [questionsQuantity, setQuestionsQuantity] = useContext(10);
+export default function SettingsCtx({ children }) {
+  const [settings, setSettings] = useState({
+    difLevel: 'easy',
+    questionsQuantity: 10,
+  });
   return (
-    <settingsCtx.Provider
+    <settingsContextConfig.Provider
       value={{
-        difLevel,
-        setDifLevel,
-        questionsQuantity,
-        setQuestionsQuantity,
+      settings,
+      setSettings
       }}
     >
       {children}
-    </settingsCtx.Provider>
+    </settingsContextConfig.Provider>
   );
 }

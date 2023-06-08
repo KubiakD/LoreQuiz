@@ -4,15 +4,11 @@ import dynamic from 'next/dynamic';
 import { useContext, useEffect, useState } from 'react';
 import { MongoClient } from 'mongodb';
 import { quizContext } from '../store/context';
-import settingsCtx from '../store/userSettings';
-import { settingsContextConfig } from '../store/userSettings';
 import Input from '../components/Input';
 import Button from '../components/Button';
 import classes from '../styles/index.module.css';
 export default function Home(props) {
   const ctx = useContext(quizContext);
-  const settings = useContext(settingsContextConfig);
-  console.log(settings);
   const router = useRouter();
   const quantities = props.quantities;
 
@@ -46,18 +42,28 @@ export default function Home(props) {
     setOpenSettings(curState => true);
   };
   return (
-    <settingsCtx>
+    <>
       <Head>
         <title>Welcome to LoreQuiz</title>
       </Head>
-      { openSettings && <Settings setOpenSettings={setOpenSettings} max={quantities} /> }
+      {openSettings && (
+        <Settings setOpenSettings={setOpenSettings} max={quantities}/>
+      )}
       <h1>Welcome to LoreQuiz</h1>
-      <Button onClick={settingsHandler}>Settings</Button>
-      <form className={classes.form} onSubmit={submitHandler} autoComplete='off'>
-        <Input label='Enter your name to begin' input={{ id: 'username' }} onChange={changeHandler} />
-        <Button button={inputIsEmpty && {disabled: true}}>Submit</Button>
+      <form
+        className={classes.form}
+        onSubmit={submitHandler}
+        autoComplete='off'
+      >
+        <Input
+          label='Enter your name to begin'
+          input={{ id: 'username' }}
+          onChange={changeHandler}
+        />
+        <Button button={inputIsEmpty && { disabled: true }}>Submit</Button>
       </form>
-    </settingsCtx>
+      <Button onClick={settingsHandler}>Settings</Button>
+    </>
   );
 }
 export const getServerSideProps = async () => {
