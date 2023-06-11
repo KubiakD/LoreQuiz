@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import { useContext, useState } from 'react';
 import { quizContext } from '../store/context';
+import { settingsContextConfig } from '../store/userSettings';
 import Question from '../components/Question';
 import Answer from '../components/Answer';
 import ButtonsSection from '../components/Prev&NextButtons';
@@ -8,6 +9,8 @@ import classes from '../styles/questionPage.module.css';
 
 export default function QuestionPage() {
   const ctx = useContext(quizContext);
+  const settingsCtx = useContext(settingsContextConfig);
+  const { questionsQuantity: max } = settingsCtx.settings;
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [answerIsSelected, setAnswerIsSelected] = useState(false);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -23,7 +26,7 @@ export default function QuestionPage() {
   return (
     <>
       <Head>
-        <title>{`Question ${currentQuestionIndex+1}/10`}</title>
+        <title>{`Question ${currentQuestionIndex+1}/${max}`}</title>
       </Head>
       <Question question={question.question} />
       <section className={classes.answers}>
