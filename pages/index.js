@@ -1,28 +1,30 @@
+import { MongoClient } from 'mongodb';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
-import { useContext, useEffect, useState } from 'react';
-import { MongoClient } from 'mongodb';
+import { useContext, useState } from 'react';
 import { quizContext } from '../store/context';
+import { settingsContextConfig } from '../store/userSettings';
 import Input from '../components/Input';
 import Button from '../components/Button';
 import classes from '../styles/index.module.css';
 export default function Home(props) {
   const ctx = useContext(quizContext);
+  const settingsCtx = useContext(settingsContextConfig);
   const router = useRouter();
   const quantities = props.quantities;
 
   const [inputIsEmpty, setInputIsEmpty] = useState(true);
-  useEffect(()=>{
-    for (const question of props.questions) {
-      question.answers.sort(() => Math.random() - 0.5);
-      ctx.setQuestions(props.questions);
-    }
-  },[]);
 
-  const submitHandler = event => {
+  const submitHandler = async (event) => {
     event.preventDefault();
     const enteredName = event.target[0].value;
+    const {difLevel, questionsQuantity} = settingsCtx.settings;
+    console.log(difLevel);
+    console.log(questionsQuantity);
+    const response = await fetch(`/api/get-questions?level=${difLevel}&quantity=${questionsQuantity}`);
+    const questions = await response.json();
+    ctx.setQuestions(questions);
     ctx.setScore({...ctx.score, name: enteredName});
     router.push('/questions');
   };
@@ -69,14 +71,12 @@ export default function Home(props) {
 export const getServerSideProps = async () => {
   const client = await MongoClient.connect(process.env.MONGO_URI);
   const db = client.db().collection('questions');
-  const questions = await db.aggregate([{ $sample: { size: 10 } }]).toArray();
   const easyQuestionsQuantity = await db.countDocuments({difficultyLevel: 'easy'});
   const mediumQuestionsQuantity = await db.countDocuments({difficultyLevel: 'medium'});
   const hardQuestionsQuantity = await db.countDocuments({difficultyLevel: 'hard'});
   client.close();
   return {
     props: {
-      questions: JSON.parse(JSON.stringify(questions)),
       quantities: {
         easy:easyQuestionsQuantity,
         medium:mediumQuestionsQuantity,
