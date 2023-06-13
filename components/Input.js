@@ -33,7 +33,8 @@ export const SelectInput = props => {
   );
 };
 export const RangeInput = props => {
-  const [value, setValue] = useState(0);
+  const savedValue = props.value;
+  const [value, setValue] = useState(savedValue);
   const changeHandler = event => {
     setValue(value => event.target.value)
   };
@@ -41,7 +42,7 @@ export const RangeInput = props => {
     <>
       <label htmlFor={props.input.id}>{props.label}</label>
       <div className={classes.range}>
-        <input type='range' min={props.min} max={props.max} value={value || 10} onChange={changeHandler}/>
+        <input type='range' min={props.min} max={props.max} value={value} onChange={changeHandler}/>
        </div>
     </>
   );

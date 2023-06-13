@@ -6,6 +6,7 @@ import { useContext, useState, useEffect } from 'react';
 const Settings = props => {
     const {settings, setSettings} = useContext(settingsContextConfig);
     const savedDifLevel = settings.difLevel;
+    const savedQuestionsQuantity = settings.questionsQuantity;
     const options = ['easy', 'medium', 'hard'];
     const [selectedDifLevel, setSelectedDifLevel] = useState('easy');
     const quantities = props.max;
@@ -33,7 +34,7 @@ const Settings = props => {
                 setSelectedDifLevel={setSelectedDifLevel} 
                 savedDifLevel={savedDifLevel} 
             />
-            <RangeInput input={{id: 'quantity'}} label='Number of questions' min='4' max={quantities[`${selectedDifLevel}`]} />
+            <RangeInput input={{id: 'quantity'}} label='Number of questions' min='4' max={quantities[`${selectedDifLevel}`]} value={savedQuestionsQuantity} />
             <div className={classes.btnControl}>
             <Button>Save</Button>
             <Button button={{type: 'reset'}} onClick={cancelHandler}>Cancel</Button>
