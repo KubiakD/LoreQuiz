@@ -9,8 +9,11 @@ export default function Input(props) {
     );
 };
 export const SelectInput = props => {
+  const {savedDifLevel} = props;
+  const [selectedValue, setSelectedValue] = useState(savedDifLevel);
   const changeHandler = event => {
-    props.setSelectedDifLevel(curValue => event.target.value )
+    props.setSelectedDifLevel(value => event.target.value )
+    setSelectedValue(value=>event.target.value)
   };
   return (
     <div>
@@ -20,11 +23,11 @@ export const SelectInput = props => {
           {...props.input}
           name={props.input.id}
           onChange={changeHandler}
+          value={selectedValue}
         >
           {props.options.map((option) => (
             <option value={option} key={option}>{option}</option>
-          ))}
-          ;
+            ))}
         </select>
         </div>
   );
@@ -32,7 +35,7 @@ export const SelectInput = props => {
 export const RangeInput = props => {
   const [value, setValue] = useState(0);
   const changeHandler = event => {
-    setValue(curValue => event.target.value)
+    setValue(value => event.target.value)
   };
   return (
     <>

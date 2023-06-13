@@ -5,6 +5,7 @@ import classes from './Settings.module.css';
 import { useContext, useState, useEffect } from 'react';
 const Settings = props => {
     const {settings, setSettings} = useContext(settingsContextConfig);
+    const savedDifLevel = settings.difLevel;
     const options = ['easy', 'medium', 'hard'];
     const [selectedDifLevel, setSelectedDifLevel] = useState('easy');
     const quantities = props.max;
@@ -20,13 +21,18 @@ const Settings = props => {
             questionsQuantity: rangeInputValue
         };
         setSettings(state => ({...state, ...newSettings}));
-        console.log(settings)
         props.setOpenSettings(state=>false);
     };
     return (
         <div className={classes.backdrop}>
         <form className={classes.overlay} onSubmit={submitHandler}>
-            <SelectInput label='Difficulty level' input={{id: 'difLevel', value: selectedDifLevel}} options={options} setSelectedDifLevel={setSelectedDifLevel} />
+            <SelectInput 
+                label='Difficulty level' 
+                input={{id: 'difLevel', value: selectedDifLevel}} 
+                options={options} 
+                setSelectedDifLevel={setSelectedDifLevel} 
+                savedDifLevel={savedDifLevel} 
+            />
             <RangeInput input={{id: 'quantity'}} label='Number of questions' min='4' max={quantities[`${selectedDifLevel}`]} />
             <div className={classes.btnControl}>
             <Button>Save</Button>
