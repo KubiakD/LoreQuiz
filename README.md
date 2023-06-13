@@ -6,8 +6,7 @@
 ## General info
 #### This project is not fully optimized for mobile devices... yet. 
 This is my first portfolio project. It is a quiz app about League of Legends lore.
-When starting a quiz, the application fetches 10 random questions from the database (new questions are added all the time!), 
-and then shows the user his result, compares it with the results of others, and also gives the opportunity to check the correct answers.
+At the beginning, it allows the user to set the difficulty level and the number of questions (questions are added and updated all the time!). While answering, the user can go back to the question and change his answer. After answering all questions, he can compare his score to the other users and check the correct answers.
 You can see this app in action [here.](https://lore-quiz.vercel.app)
 
 ## Technologies
