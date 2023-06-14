@@ -15,9 +15,11 @@ export default function Home(props) {
   const quantities = props.quantities;
 
   const [inputIsEmpty, setInputIsEmpty] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   const submitHandler = async (event) => {
     event.preventDefault();
+    setIsLoading(true);
     const enteredName = event.target[0].value;
     const {difLevel, questionsQuantity} = settingsCtx.settings;
     console.log(difLevel);
@@ -43,6 +45,9 @@ export default function Home(props) {
   const settingsHandler = () => {
     setOpenSettings(curState => true);
   };
+  if (isLoading) {
+    return <h2>Loading...</h2>
+  }
   return (
     <>
       <Head>
